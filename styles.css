@@ -1,0 +1,816 @@
+/* ==========================================================================
+   SAVEN - JOYERÍA EN ORO 18K | SISTEMA DE DISEÑO DE LUJO INDEPENDIENTE
+   Proyecto SENATIC · IE María Concepción Loperena (Cúcuta)
+   Aprendices: Emmanuel Núñez & Samuel Vergara
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   1. VARIABLES & PALETA DE LUJO (ORO 18K & OBSIDIANA)
+   -------------------------------------------------------------------------- */
+:root {
+  /* Tonos de Oro 18K */
+  --gold-primary: #D4AF37;
+  --gold-light: #FFF2B2;
+  --gold-rich: #E5C158;
+  --gold-dark: #B8860B;
+  --gold-deep: #8A6508;
+  --gold-glow: rgba(212, 175, 55, 0.35);
+  
+  /* Gradientes de Oro Real */
+  --gradient-gold: linear-gradient(135deg, #FFF2B2 0%, #E5C158 40%, #D4AF37 70%, #B8860B 100%);
+  --gradient-gold-btn: linear-gradient(135deg, #F3CF65 0%, #D4AF37 50%, #B8860B 100%);
+  --gradient-gold-dark: linear-gradient(135deg, rgba(212, 175, 55, 0.15) 0%, rgba(184, 134, 11, 0.05) 100%);
+  
+  /* Superficies Oscuras (Obsidiana y Carbón de Lujo) */
+  --bg-deep: #060709;
+  --bg-card: #0C0E12;
+  --bg-surface: #12151B;
+  --bg-surface-elevated: #181C24;
+  --bg-input: #0F1217;
+  
+  /* Bordes Metálicos */
+  --border-subtle: rgba(255, 255, 255, 0.08);
+  --border-gold: rgba(212, 175, 55, 0.28);
+  --border-gold-strong: rgba(229, 193, 88, 0.6);
+  
+  /* Textos */
+  --text-primary: #F8FAFC;
+  --text-secondary: #CBD5E1;
+  --text-muted: #94A3B8;
+  --text-dark: #64748B;
+  --text-gold: #F3CF65;
+  
+  /* Tipografía */
+  --font-serif: 'Cinzel', Georgia, serif;
+  --font-sans: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  
+  /* Sombras y Luces */
+  --shadow-gold-sm: 0 4px 14px rgba(212, 175, 55, 0.15);
+  --shadow-gold-lg: 0 10px 30px rgba(212, 175, 55, 0.25);
+  --shadow-app: 0 25px 60px -15px rgba(0, 0, 0, 0.8), 0 0 40px rgba(212, 175, 55, 0.1);
+}
+
+/* --------------------------------------------------------------------------
+   2. RESET & BASE
+   -------------------------------------------------------------------------- */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-size: 16px;
+}
+
+body {
+  font-family: var(--font-sans);
+  background-color: var(--bg-deep);
+  color: var(--text-primary);
+  line-height: 1.6;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-image: 
+    radial-gradient(circle at 15% 10%, rgba(212, 175, 55, 0.06) 0%, transparent 40%),
+    radial-gradient(circle at 85% 90%, rgba(212, 175, 55, 0.04) 0%, transparent 40%);
+}
+
+/* Scrollbars */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #0C0E12;
+}
+::-webkit-scrollbar-thumb {
+  background: #2E2717;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--gold-primary);
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+button, input, select, textarea {
+  font: inherit;
+  color: inherit;
+}
+
+/* --------------------------------------------------------------------------
+   3. TIPOGRAFÍA Y TEXTO EN ORO
+   -------------------------------------------------------------------------- */
+.font-serif-luxury {
+  font-family: var(--font-serif);
+}
+
+.gold-gradient-text {
+  background: var(--gradient-gold);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  display: inline-block;
+}
+
+/* --------------------------------------------------------------------------
+   4. SISTEMA DE CLASES UTILITARIAS BÁSICAS (AUTÓNOMO DE CDN)
+   -------------------------------------------------------------------------- */
+.flex { display: flex; }
+.flex-col { flex-direction: column; }
+.flex-row { flex-direction: row; }
+.flex-wrap { flex-wrap: wrap; }
+.flex-1 { flex: 1 1 0%; }
+.items-center { align-items: center; }
+.items-start { align-items: flex-start; }
+.items-baseline { align-items: baseline; }
+.justify-between { justify-content: space-between; }
+.justify-center { justify-content: center; }
+.justify-end { justify-content: flex-end; }
+.justify-start { justify-content: flex-start; }
+.shrink-0 { flex-shrink: 0; }
+
+.grid { display: grid; }
+.grid-cols-1 { grid-template-columns: repeat(1, minmax(0, 1fr)); }
+.grid-cols-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.grid-cols-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.gap-1 { gap: 0.25rem; }
+.gap-1\.5 { gap: 0.375rem; }
+.gap-2 { gap: 0.5rem; }
+.gap-3 { gap: 0.75rem; }
+.gap-4 { gap: 1rem; }
+
+.w-full { width: 100%; }
+.h-full { height: 100%; }
+.max-w-xs { max-width: 20rem; }
+.max-w-sm { max-width: 24rem; }
+.max-w-md { max-width: 28rem; }
+.max-w-lg { max-width: 32rem; }
+.max-w-2xl { max-width: 42rem; }
+.max-w-5xl { max-width: 64rem; }
+.min-h-\[750px\] { min-height: 750px; }
+.mx-auto { margin-left: auto; margin-right: auto; }
+.my-auto { margin-top: auto; margin-bottom: auto; }
+
+.p-0 { padding: 0; }
+.p-0\.5 { padding: 0.125rem; }
+.p-1 { padding: 0.25rem; }
+.p-2 { padding: 0.5rem; }
+.p-2\.5 { padding: 0.625rem; }
+.p-3 { padding: 0.75rem; }
+.p-4 { padding: 1rem; }
+.p-6 { padding: 1.5rem; }
+.px-2 { padding-left: 0.5rem; padding-right: 0.5rem; }
+.px-2\.5 { padding-left: 0.625rem; padding-right: 0.625rem; }
+.px-3 { padding-left: 0.75rem; padding-right: 0.75rem; }
+.px-3\.5 { padding-left: 0.875rem; padding-right: 0.875rem; }
+.px-4 { padding-left: 1rem; padding-right: 1rem; }
+.px-6 { padding-left: 1.5rem; padding-right: 1.5rem; }
+.py-0\.5 { padding-top: 0.125rem; padding-bottom: 0.125rem; }
+.py-1 { padding-top: 0.25rem; padding-bottom: 0.25rem; }
+.py-2 { padding-top: 0.5rem; padding-bottom: 0.5rem; }
+.py-2\.5 { padding-top: 0.625rem; padding-bottom: 0.625rem; }
+.py-3 { padding-top: 0.75rem; padding-bottom: 0.75rem; }
+.py-3\.5 { padding-top: 0.875rem; padding-bottom: 0.875rem; }
+.py-4 { padding-top: 1rem; padding-bottom: 1rem; }
+.pb-2 { padding-bottom: 0.5rem; }
+.pb-3 { padding-bottom: 0.75rem; }
+.pt-3 { padding-top: 0.75rem; }
+.pt-5 { padding-top: 1.25rem; }
+
+.mb-1 { margin-bottom: 0.25rem; }
+.mb-2 { margin-bottom: 0.5rem; }
+.mb-3 { margin-bottom: 0.75rem; }
+.mb-4 { margin-bottom: 1rem; }
+.mb-5 { margin-bottom: 1.25rem; }
+.mb-6 { margin-bottom: 1.5rem; }
+.mt-1 { margin-top: 0.25rem; }
+.mt-2 { margin-top: 0.5rem; }
+.mt-4 { margin-top: 1rem; }
+.mt-5 { margin-top: 1.25rem; }
+.mt-6 { margin-top: 1.5rem; }
+.mr-1 { margin-right: 0.25rem; }
+.mr-1\.5 { margin-right: 0.375rem; }
+.mr-2 { margin-right: 0.5rem; }
+
+.space-y-2 > * + * { margin-top: 0.5rem; }
+.space-y-3 > * + * { margin-top: 0.75rem; }
+.space-y-4 > * + * { margin-top: 1rem; }
+
+.text-center { text-align: center; }
+.text-left { text-align: left; }
+.text-right { text-align: right; }
+
+.text-\[9px\] { font-size: 9px; }
+.text-\[10px\] { font-size: 10px; }
+.text-\[11px\] { font-size: 11px; }
+.text-xs { font-size: 0.75rem; }
+.text-sm { font-size: 0.875rem; }
+.text-base { font-size: 1rem; }
+.text-lg { font-size: 1.125rem; }
+.text-xl { font-size: 1.25rem; }
+.text-2xl { font-size: 1.5rem; }
+.text-3xl { font-size: 1.875rem; }
+.text-4xl { font-size: 2.25rem; }
+.text-5xl { font-size: 3rem; }
+
+.font-bold { font-weight: 700; }
+.font-semibold { font-weight: 600; }
+.font-medium { font-weight: 500; }
+.font-mono { font-family: monospace; }
+
+.uppercase { text-transform: uppercase; }
+.tracking-wide { letter-spacing: 0.025em; }
+.tracking-wider { letter-spacing: 0.05em; }
+.tracking-widest { letter-spacing: 0.1em; }
+.tracking-\[0\.25em\] { letter-spacing: 0.25em; }
+.tracking-\[0\.3em\] { letter-spacing: 0.3em; }
+.tracking-\[0\.35em\] { letter-spacing: 0.35em; }
+
+.text-white { color: #FFFFFF; }
+.text-black { color: #000000; }
+.text-amber-200 { color: #FDE68A; }
+.text-amber-300 { color: #FCD34D; }
+.text-amber-400 { color: #FBBF24; }
+.text-zinc-200 { color: #E4E4E7; }
+.text-zinc-300 { color: #D4D4D8; }
+.text-zinc-400 { color: #A1A1AA; }
+.text-zinc-500 { color: #71717A; }
+.text-zinc-600 { color: #52525B; }
+.text-zinc-700 { color: #3F3F46; }
+.text-zinc-950 { color: #09090B; }
+.text-emerald-400 { color: #34D399; }
+.text-red-300 { color: #FCA5A5; }
+.text-red-400 { color: #F87171; }
+
+.bg-zinc-800 { background-color: #27272A; }
+.bg-zinc-850 { background-color: #202023; }
+.bg-zinc-900 { background-color: #18181B; }
+.bg-zinc-950 { background-color: #09090B; }
+.bg-amber-400 { background-color: #FBBF24; }
+.bg-amber-500\/10 { background-color: rgba(245, 158, 11, 0.1); }
+.bg-amber-500\/20 { background-color: rgba(245, 158, 11, 0.2); }
+.bg-amber-950\/80 { background-color: rgba(69, 26, 3, 0.8); }
+.bg-red-950\/60 { background-color: rgba(69, 10, 10, 0.6); }
+
+.border { border-width: 1px; border-style: solid; }
+.border-2 { border-width: 2px; border-style: solid; }
+.border-b { border-bottom-width: 1px; border-bottom-style: solid; }
+.border-t { border-top-width: 1px; border-top-style: solid; }
+.border-l { border-left-width: 1px; border-left-style: solid; }
+.border-r { border-right-width: 1px; border-right-style: solid; }
+.border-dashed { border-style: dashed; }
+.border-zinc-750 { border-color: #333338; }
+.border-zinc-800 { border-color: #27272A; }
+.border-zinc-900 { border-color: #18181B; }
+.border-amber-900\/20 { border-color: rgba(120, 53, 15, 0.2); }
+.border-amber-900\/30 { border-color: rgba(120, 53, 15, 0.3); }
+.border-amber-900\/40 { border-color: rgba(120, 53, 15, 0.4); }
+.border-amber-900\/50 { border-color: rgba(120, 53, 15, 0.5); }
+.border-amber-950\/60 { border-color: rgba(69, 26, 3, 0.6); }
+.border-amber-500\/20 { border-color: rgba(245, 158, 11, 0.2); }
+.border-amber-500\/25 { border-color: rgba(245, 158, 11, 0.25); }
+.border-amber-500\/30 { border-color: rgba(245, 158, 11, 0.3); }
+.border-amber-500\/40 { border-color: rgba(245, 158, 11, 0.4); }
+.border-amber-500\/50 { border-color: rgba(245, 158, 11, 0.5); }
+.border-emerald-500\/40 { border-color: rgba(16, 185, 129, 0.4); }
+.border-red-900\/40 { border-color: rgba(127, 29, 29, 0.4); }
+
+.rounded { border-radius: 0.25rem; }
+.rounded-lg { border-radius: 0.5rem; }
+.rounded-xl { border-radius: 0.75rem; }
+.rounded-2xl { border-radius: 1rem; }
+.rounded-full { border-radius: 9999px; }
+
+.shadow-lg { box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.3); }
+.shadow-2xl { box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5); }
+
+.relative { position: relative; }
+.absolute { position: absolute; }
+.fixed { position: fixed; }
+.sticky { position: sticky; }
+.top-0 { top: 0; }
+.right-0 { right: 0; }
+.left-0 { left: 0; }
+.bottom-0 { bottom: 0; }
+.top-2 { top: 0.5rem; }
+.right-2 { right: 0.5rem; }
+.left-2 { left: 0.5rem; }
+.top-4 { top: 1rem; }
+.right-4 { right: 1rem; }
+.right-3\.5 { right: 0.875rem; }
+.top-1\/2 { top: 50%; }
+.-translate-y-1\/2 { transform: translateY(-50%); }
+.-top-1\.5 { top: -0.375rem; }
+.-right-1\.5 { right: -0.375rem; }
+
+.z-10 { z-index: 10; }
+.z-20 { z-index: 20; }
+.z-40 { z-index: 40; }
+.z-50 { z-index: 50; }
+
+.overflow-hidden { overflow-wrap: normal; overflow: hidden; }
+.overflow-y-auto { overflow-y: auto; }
+.overflow-x-auto { overflow-x: auto; }
+.hidden { display: none !important; }
+.block { display: block; }
+.inline { display: inline; }
+.inline-flex { display: inline-flex; }
+.truncate { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.whitespace-nowrap { white-space: nowrap; }
+
+/* --------------------------------------------------------------------------
+   5. BOTONES DE ORO & CONTROLES
+   -------------------------------------------------------------------------- */
+.gold-btn {
+  background: var(--gradient-gold-btn);
+  color: #0A0A0A;
+  font-weight: 700;
+  border: none;
+  cursor: pointer;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  box-shadow: 0 4px 14px rgba(212, 175, 55, 0.25);
+}
+
+.gold-btn:hover {
+  filter: brightness(1.1);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(212, 175, 55, 0.4);
+}
+
+.gold-btn:active {
+  transform: translateY(0);
+}
+
+/* --------------------------------------------------------------------------
+   6. BARRA SUPERIOR DE EVALUACIÓN SENA
+   -------------------------------------------------------------------------- */
+.top-util-bar {
+  background-color: #0B0D11;
+  border-bottom: 1px solid rgba(212, 175, 55, 0.2);
+  padding: 0.5rem 1rem;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  font-size: 0.75rem;
+}
+
+.sena-screen-nav {
+  display: flex;
+  align-items: center;
+  background: #14171E;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 8px;
+  padding: 2px;
+}
+
+.sena-nav-btn {
+  padding: 0.35rem 0.65rem;
+  border-radius: 6px;
+  font-size: 0.7rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.sena-nav-btn:hover {
+  color: #FFFFFF;
+}
+
+.sena-nav-btn.active {
+  background: var(--gradient-gold-btn);
+  color: #000000;
+  font-weight: 700;
+}
+
+/* --------------------------------------------------------------------------
+   7. CONTENEDOR PRINCIPAL / SIMULADOR DE TELÉFONO
+   -------------------------------------------------------------------------- */
+.app-container-wrapper {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+  width: 100%;
+}
+
+#appContainer {
+  width: 100%;
+  max-width: 1060px;
+  min-height: 760px;
+  background: var(--bg-card);
+  border-radius: 20px;
+  border: 1px solid var(--border-gold);
+  box-shadow: var(--shadow-app);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  position: relative;
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Modo teléfono (Simulador Móvil) */
+#appContainer.mobile-view {
+  max-width: 400px;
+  min-height: 820px;
+  border-radius: 44px;
+  border: 10px solid #232731;
+  box-shadow: 
+    0 0 0 2px rgba(212, 175, 55, 0.3),
+    0 30px 80px rgba(0, 0, 0, 0.9);
+}
+
+#appContainer.mobile-view::before {
+  content: '';
+  position: absolute;
+  top: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 110px;
+  height: 24px;
+  background: #181C24;
+  border-radius: 14px;
+  z-index: 40;
+  box-shadow: inset 0 0 4px rgba(0, 0, 0, 0.8);
+}
+
+/* --------------------------------------------------------------------------
+   8. PANTALLAS (SCREENS)
+   -------------------------------------------------------------------------- */
+.screen {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  transition: opacity 0.25s ease;
+}
+
+.screen.hidden {
+  display: none !important;
+}
+
+/* Monograma SVG en Splash */
+.monogram-container {
+  width: 96px;
+  height: 96px;
+  max-width: 96px;
+  max-height: 96px;
+  margin: 0 auto 1.5rem;
+  filter: drop-shadow(0 8px 24px rgba(212, 175, 55, 0.45));
+  animation: goldPulse 4s ease-in-out infinite;
+}
+
+.monogram-container svg {
+  width: 96px;
+  height: 96px;
+  max-width: 96px;
+  max-height: 96px;
+  display: block;
+}
+
+@keyframes goldPulse {
+  0%, 100% { transform: scale(1); filter: drop-shadow(0 8px 20px rgba(212, 175, 55, 0.4)); }
+  50% { transform: scale(1.04); filter: drop-shadow(0 12px 30px rgba(212, 175, 55, 0.65)); }
+}
+
+/* Barra de progreso Splash */
+.splash-progress-track {
+  width: 100%;
+  max-width: 320px;
+  height: 6px;
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 999px;
+  overflow: hidden;
+  border: 1px solid rgba(212, 175, 55, 0.25);
+  margin-bottom: 1rem;
+}
+
+.splash-progress-bar {
+  height: 100%;
+  width: 0%;
+  background: var(--gradient-gold);
+  border-radius: 999px;
+  transition: width 0.15s ease;
+}
+
+/* --------------------------------------------------------------------------
+   9. HUB PRINCIPAL (PANTALLA 3)
+   -------------------------------------------------------------------------- */
+.hub-action-card {
+  background: linear-gradient(145deg, #12151B 0%, #0E1015 100%);
+  border: 1px solid var(--border-gold);
+  border-radius: 20px;
+  padding: 1.75rem;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  position: relative;
+  overflow: hidden;
+}
+
+.hub-action-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: var(--gradient-gold);
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.hub-action-card:hover {
+  transform: translateY(-6px);
+  border-color: var(--gold-rich);
+  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.5), 0 0 25px rgba(212, 175, 55, 0.2);
+}
+
+.hub-action-card:hover::before {
+  opacity: 1;
+}
+
+/* --------------------------------------------------------------------------
+   10. CATÁLOGO DE JOYAS (PANTALLA 4)
+   -------------------------------------------------------------------------- */
+.product-card {
+  background: var(--bg-surface);
+  border: 1px solid var(--border-subtle);
+  border-radius: 18px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+
+.product-card:hover {
+  transform: translateY(-5px);
+  border-color: var(--border-gold-strong);
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.5), 0 0 20px rgba(212, 175, 55, 0.15);
+}
+
+.product-img-wrap {
+  position: relative;
+  aspect-ratio: 4 / 3;
+  background: #08090C;
+  overflow: hidden;
+}
+
+.product-img-wrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.4s ease;
+}
+
+.product-card:hover .product-img-wrap img {
+  transform: scale(1.06);
+}
+
+.product-purity-badge {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  background: rgba(14, 16, 20, 0.9);
+  backdrop-filter: blur(6px);
+  color: var(--gold-light);
+  border: 1px solid var(--border-gold);
+  font-size: 0.65rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  padding: 0.25rem 0.6rem;
+  border-radius: 6px;
+  letter-spacing: 0.05em;
+}
+
+.product-fav-btn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: rgba(14, 16, 20, 0.85);
+  backdrop-filter: blur(6px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: var(--gold-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.product-fav-btn:hover {
+  transform: scale(1.15);
+  background: rgba(14, 16, 20, 1);
+  color: #FFD700;
+}
+
+/* Píldoras de Categoría */
+.category-pill {
+  padding: 0.45rem 1rem;
+  border-radius: 12px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  background: var(--bg-surface);
+  color: var(--text-secondary);
+  border: 1px solid var(--border-subtle);
+  cursor: pointer;
+  transition: all 0.2s;
+  white-space: nowrap;
+}
+
+.category-pill:hover {
+  color: #FFFFFF;
+  border-color: var(--border-gold);
+}
+
+.category-pill.active {
+  background: var(--gradient-gold-btn);
+  color: #000000;
+  font-weight: 700;
+  border-color: transparent;
+  box-shadow: var(--shadow-gold-sm);
+}
+
+/* --------------------------------------------------------------------------
+   11. MODALES & MENÚ LATERAL (DRAWER)
+   -------------------------------------------------------------------------- */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.85);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  z-index: 1000;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.25s ease, visibility 0.25s ease;
+}
+
+.modal-overlay.active {
+  display: flex !important;
+  opacity: 1;
+  visibility: visible;
+}
+
+.modal-content-card {
+  background: #0E1116;
+  border: 1px solid var(--border-gold);
+  border-radius: 24px;
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.9), 0 0 30px rgba(212, 175, 55, 0.15);
+  width: 100%;
+  max-width: 520px;
+  max-height: 90vh;
+  overflow-y: auto;
+  position: relative;
+  padding: 2rem;
+}
+
+.drawer-right {
+  position: fixed;
+  top: 0;
+  right: -100%;
+  width: 100%;
+  max-width: 380px;
+  height: 100vh;
+  background: #0E1015;
+  border-left: 1px solid var(--border-gold);
+  z-index: 1100;
+  display: flex;
+  flex-direction: column;
+  transition: right 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: -15px 0 40px rgba(0, 0, 0, 0.8);
+}
+
+.drawer-right.active {
+  right: 0;
+}
+
+.drawer-left {
+  position: fixed;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  max-width: 300px;
+  height: 100vh;
+  background: #0E1015;
+  border-right: 1px solid var(--border-gold);
+  z-index: 1100;
+  display: flex;
+  flex-direction: column;
+  transition: left 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 15px 0 40px rgba(0, 0, 0, 0.8);
+}
+
+.drawer-left.active {
+  left: 0;
+}
+
+/* --------------------------------------------------------------------------
+   12. TOAST NOTIFICATIONS
+   -------------------------------------------------------------------------- */
+.saven-toast {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  background: #14171E;
+  border: 1px solid var(--gold-primary);
+  color: #FFFFFF;
+  padding: 0.85rem 1.4rem;
+  border-radius: 12px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6), 0 0 15px rgba(212, 175, 55, 0.2);
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  z-index: 9999;
+  transform: translateY(20px);
+  opacity: 0;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.saven-toast.active {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+/* --------------------------------------------------------------------------
+   13. FORMULARIOS DE PUBLICACIÓN Y AUTH
+   -------------------------------------------------------------------------- */
+.saven-input {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  background: var(--bg-input);
+  border: 1px solid rgba(212, 175, 55, 0.25);
+  border-radius: 12px;
+  color: #FFFFFF;
+  font-size: 0.85rem;
+  transition: all 0.2s ease;
+}
+
+.saven-input:focus {
+  outline: none;
+  border-color: var(--gold-rich);
+  background: #141820;
+  box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.2);
+}
+
+.saven-input::placeholder {
+  color: var(--text-dark);
+}
+
+/* --------------------------------------------------------------------------
+   14. MEDIA QUERIES RESPONSIVAS
+   -------------------------------------------------------------------------- */
+@media (min-width: 640px) {
+  .sm\:inline { display: inline; }
+  .sm\:p-4 { padding: 1rem; }
+  .sm\:p-8 { padding: 2rem; }
+  .sm\:p-10 { padding: 2.5rem; }
+  .sm\:rounded-2xl { border-radius: 1rem; }
+  .sm\:text-5xl { font-size: 3rem; }
+  .sm\:text-base { font-size: 1rem; }
+  .sm\:text-lg { font-size: 1.125rem; }
+  .sm\:grid-cols-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .sm\:grid-cols-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+}
+
+@media (min-width: 768px) {
+  .md\:inline { display: inline; }
+  .md\:p-6 { padding: 1.5rem; }
+}
+
+@media (min-width: 1024px) {
+  .lg\:grid-cols-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+}

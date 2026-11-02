@@ -1,0 +1,17 @@
+# Documentos de ofimática y temporales
+*.docx
+*.doc
+*.pdf
+*.tmp
+*.log
+
+# Archivos del sistema
+.DS_Store
+Thumbs.db
+Desktop.ini
+
+# Editores y entornos
+.vscode/
+.idea/
+*.swp
+*.swo

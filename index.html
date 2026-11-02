@@ -1,0 +1,769 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SAVEN - Joyería en Oro 18K | Más que oro, confianza</title>
+  
+  <!-- Favicon Joya -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23D4AF37'><path d='M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5'/></svg>" type="image/svg+xml">
+  
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+  <!-- Google Fonts: Cinzel & Plus Jakarta Sans -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <!-- Font Awesome Icons CDN -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            serif: ['Cinzel', 'serif'],
+            sans: ['Plus Jakarta Sans', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Estilos de Alta Calidad y Sistema de Diseño de Lujo -->
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- BARRA SUPERIOR DE UTILIDADES Y PROYECTO SENA -->
+  <header class="top-util-bar">
+    <div class="flex items-center gap-2">
+      <i class="fa-solid fa-gem text-amber-400"></i>
+      <span class="font-serif-luxury font-bold text-amber-300 tracking-wider">SAVEN ORO 18K</span>
+      <span class="text-zinc-600 hidden sm:inline">|</span>
+      <span class="text-zinc-400 text-[11px] hidden sm:inline">Proyecto SENATIC · IE María Concepción Loperena (Cúcuta)</span>
+    </div>
+
+    <!-- Navegación directa entre pantallas para evaluación rápida -->
+    <div class="flex items-center gap-1 sm:gap-2">
+      <div class="sena-screen-nav">
+        <button onclick="navigateTo('splash')" id="navBtn-splash" class="sena-nav-btn active" title="Pantalla 1: Bienvenida">1. Splash</button>
+        <button onclick="navigateTo('auth')" id="navBtn-auth" class="sena-nav-btn" title="Pantalla 2: Iniciar Sesión / Registro">2. Login</button>
+        <button onclick="navigateTo('hub')" id="navBtn-hub" class="sena-nav-btn" title="Pantalla 3: Venta y Compra">3. Hub</button>
+        <button onclick="navigateTo('catalog')" id="navBtn-catalog" class="sena-nav-btn" title="Pantalla 4: Productos">4. Compra</button>
+        <button onclick="navigateTo('publish')" id="navBtn-publish" class="sena-nav-btn" title="Pantalla 5: Publica tu Producto">5. Venta</button>
+      </div>
+
+      <!-- Alternar marco de teléfono -->
+      <button onclick="toggleMobileView()" class="px-2.5 py-1 bg-zinc-900 hover:bg-zinc-800 border border-amber-900/50 text-amber-300 rounded-lg text-xs flex items-center gap-1.5 transition">
+        <i class="fa-solid fa-mobile-screen"></i>
+        <span class="hidden md:inline" id="viewModeText">Modo Móvil</span>
+      </button>
+
+      <!-- Ficha SENA -->
+      <button onclick="openModal('modalProject')" class="px-2.5 py-1 bg-zinc-900 hover:bg-zinc-800 border border-zinc-800 text-zinc-300 rounded-lg text-xs flex items-center gap-1 transition">
+        <i class="fa-solid fa-graduation-cap text-amber-400"></i>
+        <span class="hidden md:inline">Ficha SENA</span>
+      </button>
+    </div>
+  </header>
+
+  <!-- CONTENEDOR PRINCIPAL RESPONSIVO / SIMULADOR -->
+  <main class="app-container-wrapper">
+    <div id="appContainer">
+      
+      <!-- ============================================== -->
+      <!-- PANTALLA 1: SPLASH SCREEN (BIENVENIDA)         -->
+      <!-- ============================================== -->
+      <section id="screen-splash" class="screen flex-1 flex flex-col justify-between p-6 sm:p-10 relative overflow-hidden bg-gradient-to-b from-[#0f1115] via-[#090a0d] to-[#040506]">
+        <div class="flex justify-between items-center text-xs text-amber-300/70 font-medium z-10">
+          <span>PROYECTO SENA SENATIC</span>
+          <span class="text-amber-400 font-semibold">PANTALLA 1 · SPLASH</span>
+        </div>
+
+        <div class="my-auto flex flex-col items-center text-center z-10 py-6">
+          <!-- Monograma Isotipo S-V-E con Diamante (con dimensiones restringidas) -->
+          <div class="monogram-container">
+            <svg viewBox="0 0 140 140" fill="none" width="96" height="96">
+              <path d="M70 12 L88 28 L70 48 L52 28 Z" fill="#E5C158" stroke="#876505" stroke-width="1.5"/>
+              <line x1="70" y1="12" x2="70" y2="48" stroke="#FFFFFF" stroke-width="1.5" stroke-opacity="0.9"/>
+              <line x1="52" y1="28" x2="88" y2="28" stroke="#876505" stroke-width="1"/>
+              <path d="M58 48 C42 48 34 58 34 68 C34 82 66 84 66 98 C66 110 54 116 40 114" stroke="#E5C158" stroke-width="6" stroke-linecap="round" fill="none"/>
+              <path d="M44 54 L70 118 L96 54" stroke="#FFF2B2" stroke-width="7" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+              <path d="M106 58 L78 58 L78 114 L104 114 M78 86 L98 86" stroke="#D4AF37" stroke-width="5.5" stroke-linecap="round" fill="none"/>
+            </svg>
+          </div>
+
+          <h1 class="text-4xl sm:text-5xl font-bold font-serif-luxury tracking-[0.25em] gold-gradient-text">SAVEN</h1>
+          <p class="text-xs sm:text-sm font-semibold uppercase tracking-[0.35em] text-amber-200/90 mt-1">Joyería en Oro 18K</p>
+          
+          <div class="mt-6 max-w-sm px-4 py-2.5 rounded-xl bg-zinc-900/80 border border-amber-900/40 backdrop-blur-sm">
+            <p class="text-[11px] uppercase tracking-wider text-amber-100/90 font-medium">
+              &ldquo;Más que oro, construimos confianza en nuestros clientes&rdquo;
+            </p>
+          </div>
+        </div>
+
+        <div class="w-full max-w-sm mx-auto flex flex-col items-center gap-3 z-10">
+          <div class="splash-progress-track">
+            <div id="splashProgressBar" class="splash-progress-bar"></div>
+          </div>
+          <button onclick="navigateTo('auth')" class="w-full py-3.5 px-6 gold-btn rounded-xl text-xs uppercase tracking-wider font-bold">
+            <span>Ingresar Ahora</span>
+            <i class="fa-solid fa-arrow-right"></i>
+          </button>
+          <span class="text-[10px] text-zinc-500">Oro 18K Garantizado (Ley 750) · Cúcuta, Colombia</span>
+        </div>
+      </section>
+
+      <!-- ============================================== -->
+      <!-- PANTALLA 2: INICIAR SESIÓN Y REGISTRARSE       -->
+      <!-- ============================================== -->
+      <section id="screen-auth" class="screen hidden flex-1 flex flex-col justify-between p-4 sm:p-8 bg-[#0a0c0f]">
+        <div class="flex justify-between items-center text-xs text-amber-300/70 border-b border-amber-900/20 pb-3">
+          <span>PROYECTO SENA SENATIC</span>
+          <span class="text-amber-400 font-semibold">PANTALLA 2 · LOGIN Y REGISTRO</span>
+        </div>
+
+        <div class="w-full max-w-md mx-auto my-auto py-4">
+          <div class="text-center mb-6">
+            <h2 class="text-3xl font-bold font-serif-luxury tracking-widest gold-gradient-text">SAVEN</h2>
+            <span class="text-[10px] uppercase tracking-[0.3em] text-amber-200/80 block font-semibold">Joyería en Oro 18K</span>
+            <p class="mt-2 text-[11px] uppercase tracking-wider text-zinc-400 font-medium max-w-xs mx-auto">
+              MÁS QUE ORO, CONSTRUIMOS CONFIANZA EN NUESTROS CLIENTES
+            </p>
+          </div>
+
+          <!-- Pestañas Login / Registro -->
+          <div class="flex p-1 bg-zinc-900 rounded-xl border border-amber-900/30 mb-5">
+            <button id="tabBtnLogin" onclick="switchAuthTab('login')" class="flex-1 py-2 text-xs font-bold rounded-lg bg-amber-400 text-zinc-950 transition">
+              <i class="fa-solid fa-arrow-right-to-bracket mr-1"></i> INICIAR SESIÓN
+            </button>
+            <button id="tabBtnRegister" onclick="switchAuthTab('register')" class="flex-1 py-2 text-xs font-bold rounded-lg text-zinc-400 hover:text-white transition">
+              <i class="fa-solid fa-user-plus mr-1"></i> REGISTRARSE
+            </button>
+          </div>
+
+          <!-- FORMULARIO DE LOGIN -->
+          <form id="loginForm" onsubmit="handleLoginSubmit(event)" class="space-y-4">
+            <div>
+              <label class="block text-xs font-semibold text-amber-200/90 mb-1 tracking-wider uppercase">
+                <i class="fa-solid fa-user text-amber-400 mr-1.5"></i> Campo "USUARIO"
+              </label>
+              <input type="text" id="loginUser" required placeholder="Ingresa tu usuario o correo electrónico" 
+                class="saven-input">
+            </div>
+
+            <div>
+              <label class="block text-xs font-semibold text-amber-200/90 mb-1 tracking-wider uppercase">
+                <i class="fa-solid fa-lock text-amber-400 mr-1.5"></i> Campo de Contraseña
+              </label>
+              <div class="relative">
+                <input type="password" id="loginPass" required placeholder="••••••••" 
+                  class="saven-input pr-10">
+                <button type="button" onclick="togglePasswordVisibility('loginPass')" class="absolute right-3.5 top-1/2 -translate-y-1/2 text-zinc-400 hover:text-amber-300">
+                  <i class="fa-solid fa-eye" id="loginPassEye"></i>
+                </button>
+              </div>
+            </div>
+
+            <button type="submit" class="w-full py-3.5 gold-btn rounded-xl text-xs uppercase tracking-wider">
+              INICIAR SESIÓN
+            </button>
+
+            <button type="button" onclick="switchAuthTab('register')" class="w-full py-2.5 bg-zinc-900 hover:bg-zinc-800 text-amber-300 border border-amber-900/30 rounded-xl text-xs font-bold uppercase transition">
+              ¿No tienes cuenta? REGISTRARSE
+            </button>
+          </form>
+
+          <!-- FORMULARIO DE REGISTRO -->
+          <form id="registerForm" onsubmit="handleRegisterSubmit(event)" class="space-y-3 hidden">
+            <div>
+              <label class="block text-xs font-semibold text-amber-200/90 mb-1">Nombre Completo *</label>
+              <input type="text" id="regName" required placeholder="ej. Carmen Silva" class="saven-input">
+            </div>
+            <div class="grid grid-cols-2 gap-2">
+              <div>
+                <label class="block text-xs font-semibold text-amber-200/90 mb-1">Usuario *</label>
+                <input type="text" id="regUsername" required placeholder="carmen.joyas" class="saven-input">
+              </div>
+              <div>
+                <label class="block text-xs font-semibold text-amber-200/90 mb-1">Teléfono</label>
+                <input type="tel" id="regPhone" placeholder="3101234567" class="saven-input">
+              </div>
+            </div>
+            <div>
+              <label class="block text-xs font-semibold text-amber-200/90 mb-1">Correo Electrónico *</label>
+              <input type="email" id="regEmail" required placeholder="correo@ejemplo.com" class="saven-input">
+            </div>
+            <div class="grid grid-cols-2 gap-2">
+              <div>
+                <label class="block text-xs font-semibold text-amber-200/90 mb-1">Contraseña *</label>
+                <input type="password" id="regPass" required placeholder="••••••••" class="saven-input">
+              </div>
+              <div>
+                <label class="block text-xs font-semibold text-amber-200/90 mb-1">Confirmar *</label>
+                <input type="password" id="regPassConfirm" required placeholder="••••••••" class="saven-input">
+              </div>
+            </div>
+            <button type="submit" class="w-full py-3 gold-btn rounded-xl text-xs uppercase tracking-wider font-bold mt-2">
+              REGISTRARSE Y ENTRAR
+            </button>
+          </form>
+
+          <!-- Acceso Rápido 1-Clic -->
+          <div class="mt-6 pt-5 border-t border-zinc-800">
+            <span class="text-[11px] font-bold text-amber-400 uppercase tracking-wider block mb-2">
+              <i class="fa-solid fa-shield-halved mr-1"></i> Acceso Rápido de Prueba (SENA)
+            </span>
+            <div class="grid grid-cols-3 gap-2">
+              <button onclick="quickLogin('Emmanuel Núñez', 'joyero')" class="p-2 bg-zinc-900 hover:bg-zinc-800 border border-amber-500/30 rounded-xl text-left transition">
+                <div class="text-[11px] font-bold text-amber-300 truncate">Emmanuel Núñez</div>
+                <div class="text-[9px] text-zinc-400 truncate">Fundador · Joyero</div>
+              </button>
+              <button onclick="quickLogin('Samuel Vergara', 'joyero')" class="p-2 bg-zinc-900 hover:bg-zinc-800 border border-amber-500/30 rounded-xl text-left transition">
+                <div class="text-[11px] font-bold text-amber-300 truncate">Samuel Vergara</div>
+                <div class="text-[9px] text-zinc-400 truncate">Fundador · Joyero</div>
+              </button>
+              <button onclick="quickLogin('Gabriel Rojas', 'coordinador')" class="p-2 bg-zinc-900 hover:bg-zinc-800 border border-amber-500/30 rounded-xl text-left transition">
+                <div class="text-[11px] font-bold text-amber-300 truncate">Gabriel Rojas</div>
+                <div class="text-[9px] text-zinc-400 truncate">Coordinador SENA</div>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div class="text-center text-[10px] text-zinc-500 border-t border-zinc-900 pt-3">
+          SAVEN © 2026 · Certificación de Oro 18K Ley 750 · Cúcuta, Norte de Santander
+        </div>
+      </section>
+
+      <!-- ============================================== -->
+      <!-- PANTALLA 3: HUB PRINCIPAL (GOOD MORNING / SERVICIOS) -->
+      <!-- ============================================== -->
+      <section id="screen-hub" class="screen hidden flex-1 flex flex-col justify-between p-4 sm:p-8 bg-[#0a0c0f]">
+        <div class="flex justify-between items-center text-xs text-amber-300/70 border-b border-amber-900/20 pb-3">
+          <span>PROYECTO SENA SENATIC</span>
+          <div class="flex items-center gap-3">
+            <span class="text-amber-400 font-semibold">PANTALLA 3 · HUB DE SERVICIOS</span>
+            <button onclick="handleLogout()" class="text-zinc-400 hover:text-red-400 text-xs flex items-center gap-1 transition">
+              <i class="fa-solid fa-arrow-right-from-bracket"></i> Salir
+            </button>
+          </div>
+        </div>
+
+        <div class="max-w-2xl w-full mx-auto my-auto py-4">
+          <div class="text-center mb-6">
+            <h2 class="text-2xl sm:text-3xl font-bold font-serif-luxury tracking-widest gold-gradient-text">SAVEN</h2>
+            <span class="text-[10px] uppercase tracking-[0.25em] text-amber-200/80 block">Joyería en Oro 18K</span>
+
+            <div class="mt-4 p-4 rounded-2xl bg-zinc-900/90 border border-amber-500/25 text-center shadow-lg">
+              <span id="userGreeting" class="text-xs font-mono font-bold text-amber-400 uppercase tracking-widest block">
+                BUENOS DÍAS, SAMUEL
+              </span>
+              <p class="text-sm sm:text-base font-bold text-white tracking-wide mt-1">
+                ¡¿CON QUÉ SERVICIO TE PODEMOS APOYAR EL DÍA DE HOY?!
+              </p>
+            </div>
+          </div>
+
+          <!-- BOTONES VENTA Y COMPRA DE PANTALLA 3 -->
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-6">
+            <!-- BOTÓN VENTA -->
+            <div onclick="navigateTo('publish')" class="hub-action-card group">
+              <div>
+                <div class="w-12 h-12 rounded-xl bg-amber-500/10 border border-amber-500/30 flex items-center justify-center text-amber-400 mb-4 group-hover:scale-105 transition">
+                  <i class="fa-solid fa-tag text-xl"></i>
+                </div>
+                <div class="flex items-center justify-between">
+                  <h3 class="text-2xl font-bold font-serif-luxury text-amber-300">VENTA</h3>
+                  <span class="text-[10px] bg-amber-950/80 text-amber-300 px-2 py-0.5 rounded border border-amber-800/40">Publicar Joya</span>
+                </div>
+                <p class="mt-2 text-xs text-zinc-400 leading-relaxed">
+                  Permite a la persona poner a la venta una prenda de joyería. Indica características, precio, fotos y publícala para que los clientes puedan comprarla.
+                </p>
+              </div>
+              <div class="mt-5 pt-3 border-t border-zinc-800 flex items-center justify-between">
+                <span class="text-xs font-bold text-amber-400 uppercase tracking-wider">Ingresar a Venta</span>
+                <i class="fa-solid fa-arrow-right text-amber-400 group-hover:translate-x-1 transition"></i>
+              </div>
+            </div>
+
+            <!-- BOTÓN COMPRA -->
+            <div onclick="navigateTo('catalog')" class="hub-action-card group">
+              <div>
+                <div class="w-12 h-12 rounded-xl bg-amber-500/10 border border-amber-500/30 flex items-center justify-center text-amber-400 mb-4 group-hover:scale-105 transition">
+                  <i class="fa-solid fa-bag-shopping text-xl"></i>
+                </div>
+                <div class="flex items-center justify-between">
+                  <h3 class="text-2xl font-bold font-serif-luxury text-amber-300">COMPRA</h3>
+                  <span class="text-[10px] bg-amber-950/80 text-amber-300 px-2 py-0.5 rounded border border-amber-800/40">Ver Catálogo</span>
+                </div>
+                <p class="mt-2 text-xs text-zinc-400 leading-relaxed">
+                  Permite a la persona buscar y comprar una prenda de joyería disponible en la aplicación, revisar su información técnica y realizar el proceso de compra.
+                </p>
+              </div>
+              <div class="mt-5 pt-3 border-t border-zinc-800 flex items-center justify-between">
+                <span class="text-xs font-bold text-amber-400 uppercase tracking-wider">Explorar Catálogo</span>
+                <i class="fa-solid fa-arrow-right text-amber-400 group-hover:translate-x-1 transition"></i>
+              </div>
+            </div>
+          </div>
+
+          <!-- Servicios SENATIC -->
+          <div class="p-4 bg-zinc-900/60 rounded-2xl border border-zinc-800 grid grid-cols-1 sm:grid-cols-3 gap-3">
+            <button onclick="openModal('modalCustom')" class="p-3 bg-zinc-950 rounded-xl border border-zinc-800 hover:border-amber-500/40 text-left transition flex items-center gap-3">
+              <i class="fa-solid fa-wand-magic-sparkles text-amber-400 text-lg"></i>
+              <div>
+                <strong class="text-xs text-white block">Personalización</strong>
+                <span class="text-[10px] text-zinc-400">Joya a la medida</span>
+              </div>
+            </button>
+            <button onclick="openModal('modalCertificate')" class="p-3 bg-zinc-950 rounded-xl border border-zinc-800 hover:border-amber-500/40 text-left transition flex items-center gap-3">
+              <i class="fa-solid fa-certificate text-amber-400 text-lg"></i>
+              <div>
+                <strong class="text-xs text-white block">Certificado 18K</strong>
+                <span class="text-[10px] text-zinc-400">Verificar autenticidad</span>
+              </div>
+            </button>
+            <button onclick="openModal('modalEco')" class="p-3 bg-zinc-950 rounded-xl border border-zinc-800 hover:border-amber-500/40 text-left transition flex items-center gap-3">
+              <i class="fa-solid fa-leaf text-emerald-400 text-lg"></i>
+              <div>
+                <strong class="text-xs text-white block">Minería Ética</strong>
+                <span class="text-[10px] text-zinc-400">Economía circular</span>
+              </div>
+            </button>
+          </div>
+        </div>
+
+        <div class="text-xs text-zinc-500 border-t border-zinc-900 pt-3 flex justify-between items-center">
+          <span>Usuario activo: <strong id="userDisplayBar" class="text-amber-300">Samuel Vergara</strong></span>
+          <span class="text-amber-400 font-semibold">Oro 18K Ley 750</span>
+        </div>
+      </section>
+
+      <!-- ============================================== -->
+      <!-- PANTALLA 4: CATÁLOGO DE PRODUCTOS (COMPRA)     -->
+      <!-- ============================================== -->
+      <section id="screen-catalog" class="screen hidden flex-1 flex flex-col bg-[#0a0c0f]">
+        <!-- HEADER EXACTO DE PANTALLA 4 DEL PDF -->
+        <div class="sticky top-0 z-20 bg-[#0e1014]/95 backdrop-blur-md border-b border-amber-900/30 px-4 py-3 flex items-center justify-between gap-3">
+          <div class="flex items-center gap-3">
+            <button onclick="navigateTo('hub')" class="w-8 h-8 rounded-lg bg-zinc-900 hover:bg-zinc-800 border border-amber-500/30 text-amber-400 flex items-center justify-center transition" title="Regresar al Hub">
+              <i class="fa-solid fa-arrow-left"></i>
+            </button>
+            <h2 class="text-base sm:text-lg font-bold font-serif-luxury text-amber-300 tracking-wider">PRODUCTOS</h2>
+          </div>
+
+          <!-- BOTONES DEL PDF: INICIO, FAVORITOS, CARRITO, MENÚ -->
+          <div class="flex items-center gap-1 sm:gap-2 text-xs">
+            <button onclick="navigateTo('hub')" class="p-2 sm:px-3 sm:py-1.5 rounded-lg bg-zinc-900 hover:bg-zinc-800 border border-zinc-800 text-zinc-300 flex items-center gap-1.5 transition">
+              <i class="fa-solid fa-house text-amber-400"></i>
+              <span class="hidden md:inline font-medium">INICIO</span>
+            </button>
+
+            <button onclick="toggleFavoritesFilter()" id="favFilterBtn" class="p-2 sm:px-3 sm:py-1.5 rounded-lg bg-zinc-900 hover:bg-zinc-800 border border-zinc-800 text-zinc-300 flex items-center gap-1.5 transition">
+              <i class="fa-solid fa-star text-amber-400"></i>
+              <span class="hidden md:inline font-medium">FAVORITOS</span>
+              <span id="favCountBadge" class="text-[10px] bg-amber-500/20 text-amber-300 px-1.5 rounded-full font-mono font-bold">0</span>
+            </button>
+
+            <button onclick="openModal('modalCart')" class="relative p-2 sm:px-3 sm:py-1.5 rounded-lg bg-zinc-900 hover:bg-zinc-800 border border-zinc-800 text-zinc-300 flex items-center gap-1.5 transition">
+              <i class="fa-solid fa-cart-shopping text-amber-400"></i>
+              <span class="hidden md:inline font-medium">CARRITO</span>
+              <span id="cartCountBadge" class="absolute -top-1.5 -right-1.5 bg-amber-400 text-black text-[10px] font-bold w-4 h-4 rounded-full flex items-center justify-center font-mono">0</span>
+            </button>
+
+            <button onclick="openSideMenu()" class="p-2 sm:px-3 sm:py-1.5 rounded-lg bg-zinc-900 hover:bg-zinc-800 border border-amber-500/30 text-amber-400 flex items-center gap-1.5 transition">
+              <i class="fa-solid fa-bars"></i>
+              <span class="hidden md:inline font-medium">MENÚ</span>
+            </button>
+          </div>
+        </div>
+
+        <div class="p-4 sm:p-6 flex-1 overflow-y-auto">
+          <!-- BARRA "BUSCAR JOYAS 🔍" (PDF Pantalla 4) -->
+          <div class="relative mb-4">
+            <i class="fa-solid fa-magnifying-glass absolute left-3.5 top-1/2 -translate-y-1/2 text-amber-400"></i>
+            <input type="text" id="searchJewelryInput" oninput="filterProducts()" placeholder="BUSCAR JOYAS (ej. Cadena Gucci, Candonga, Anillo Oro 18K)..."
+              class="saven-input pl-10 pr-4 py-3">
+          </div>
+
+          <!-- Selector de Categorías -->
+          <div class="flex items-center gap-2 overflow-x-auto pb-2 mb-4 scrollbar-none text-xs">
+            <button onclick="setCategoryFilter('Todos')" class="category-pill active">Todos</button>
+            <button onclick="setCategoryFilter('Cadenas')" class="category-pill">Cadenas</button>
+            <button onclick="setCategoryFilter('Candongas')" class="category-pill">Candongas</button>
+            <button onclick="setCategoryFilter('Anillos')" class="category-pill">Anillos</button>
+            <button onclick="setCategoryFilter('Pulseras')" class="category-pill">Pulseras</button>
+            <button onclick="setCategoryFilter('Dijes')" class="category-pill">Dijes</button>
+          </div>
+
+          <!-- GRILLA DE JOYAS -->
+          <div id="productsGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+            <!-- Renderizado dinámico en JS -->
+          </div>
+        </div>
+      </section>
+
+      <!-- ============================================== -->
+      <!-- PANTALLA 5: PUBLICA TU PRODUCTO (VENTA)        -->
+      <!-- ============================================== -->
+      <section id="screen-publish" class="screen hidden flex-1 flex flex-col bg-[#0a0c0f]">
+        <!-- HEADER EXACTO DE PANTALLA 5 DEL PDF -->
+        <div class="sticky top-0 z-20 bg-[#0e1014]/95 backdrop-blur-md border-b border-amber-900/30 px-4 py-3 flex items-center justify-between">
+          <button onclick="navigateTo('hub')" class="w-8 h-8 rounded-lg bg-zinc-900 hover:bg-zinc-800 border border-amber-500/30 text-amber-400 flex items-center justify-center transition" title="Regresar">
+            <i class="fa-solid fa-arrow-left"></i>
+          </button>
+          
+          <div class="text-center">
+            <h2 class="text-sm font-bold font-serif-luxury text-amber-300 tracking-wider">SAVEN</h2>
+            <span class="text-[9px] uppercase tracking-widest text-amber-200/70 font-semibold">Joyería en Oro 18K · Venta</span>
+          </div>
+
+          <button onclick="openSideMenu()" class="w-8 h-8 rounded-lg bg-zinc-900 hover:bg-zinc-800 border border-amber-500/30 text-amber-400 flex items-center justify-center transition" title="Menú">
+            <i class="fa-solid fa-bars"></i>
+          </button>
+        </div>
+
+        <!-- FORMULARIO EXACTO DEL PDF PANTALLA 5 -->
+        <div class="p-4 sm:p-6 max-w-2xl w-full mx-auto flex-1 overflow-y-auto">
+          <div class="mb-4 pb-2 border-b border-zinc-800 flex items-center justify-between">
+            <h3 class="text-lg font-bold font-serif-luxury text-amber-300">PUBLICA TU PRODUCTO</h3>
+            <span class="text-[10px] bg-amber-950/80 text-amber-400 px-2 py-0.5 rounded border border-amber-800/40">PANTALLA 5</span>
+          </div>
+
+          <form id="publishForm" onsubmit="handlePublishSubmit(event)" class="space-y-4 text-xs">
+            <!-- Fotos del producto * -->
+            <div>
+              <label class="block font-semibold text-amber-200/90 mb-2 uppercase">Fotos del producto *</label>
+              <div class="flex items-center gap-3">
+                <div id="previewPhotoBox" class="w-24 h-24 rounded-2xl bg-zinc-900 border-2 border-dashed border-amber-500/40 flex items-center justify-center overflow-hidden shrink-0">
+                  <i class="fa-solid fa-gem text-amber-500/40 text-2xl" id="previewPlaceholderIcon"></i>
+                  <img id="publishPreviewImg" src="" class="w-full h-full object-cover hidden" alt="Vista previa">
+                </div>
+
+                <div class="space-y-2 flex-1">
+                  <button type="button" onclick="selectSampleImage()" class="w-full py-2.5 px-3 bg-zinc-900 hover:bg-zinc-800 border border-amber-500/30 text-amber-300 rounded-xl font-bold flex items-center justify-center gap-2 transition">
+                    <i class="fa-solid fa-plus text-amber-400"></i>
+                    <span>+ Agregar Foto de Muestra (Oro 18K)</span>
+                  </button>
+                  <label class="w-full py-2 px-3 bg-zinc-900 hover:bg-zinc-800 border border-zinc-800 text-zinc-300 rounded-xl font-medium flex items-center justify-center gap-2 cursor-pointer transition">
+                    <i class="fa-solid fa-upload text-amber-400"></i>
+                    <span>Subir desde mi Dispositivo</span>
+                    <input type="file" accept="image/*" onchange="handleFileSelected(event)" class="hidden">
+                  </label>
+                </div>
+              </div>
+            </div>
+
+            <!-- Título -->
+            <div>
+              <label class="block font-semibold text-amber-200/90 mb-1 uppercase">Título de la Prenda *</label>
+              <input type="text" id="pubTitle" required placeholder="ej. Cadena Tejido Gucci Oro 18K (200g)"
+                class="saven-input">
+            </div>
+
+            <!-- Categoría y Disponibilidad -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+              <div>
+                <label class="block font-semibold text-amber-200/90 mb-1 uppercase">Categoría *</label>
+                <select id="pubCategory" required class="saven-input">
+                  <option value="Cadenas">Cadenas</option>
+                  <option value="Candongas">Candongas</option>
+                  <option value="Anillos">Anillos</option>
+                  <option value="Pulseras">Pulseras</option>
+                  <option value="Dijes">Dijes</option>
+                  <option value="Aretes">Aretes</option>
+                </select>
+              </div>
+
+              <div>
+                <label class="block font-semibold text-amber-200/90 mb-1 uppercase">Disponibilidad *</label>
+                <select id="pubAvailability" required class="saven-input">
+                  <option value="En stock">En stock</option>
+                  <option value="Bajo pedido">Bajo pedido</option>
+                  <option value="Agotado">Agotado</option>
+                </select>
+              </div>
+            </div>
+
+            <!-- Descripción -->
+            <div>
+              <label class="block font-semibold text-amber-200/90 mb-1 uppercase">Descripción *</label>
+              <textarea id="pubDescription" required rows="3" placeholder="Escribe la descripción de tu producto: tipo de oro (18k ley 750), medidas, peso, acabado..."
+                class="saven-input"></textarea>
+            </div>
+
+            <!-- Precio y Peso -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+              <div>
+                <label class="block font-semibold text-amber-200/90 mb-1 uppercase">Precio de Venta (COP $) *</label>
+                <input type="number" id="pubPrice" required placeholder="Ejemplo: 3850000"
+                  class="saven-input font-mono">
+              </div>
+              <div>
+                <label class="block font-semibold text-amber-200/90 mb-1 uppercase">Peso en Gramos (Oro 18K)</label>
+                <input type="number" step="0.1" id="pubWeight" value="12" placeholder="12.5"
+                  class="saven-input font-mono">
+              </div>
+            </div>
+
+            <!-- Colores disponibles -->
+            <div>
+              <label class="block font-semibold text-amber-200/90 mb-1 uppercase">Colores disponibles</label>
+              <input type="text" id="pubColors" value="Dorado tradicional 18K, Oro rosa" placeholder="Ejemplo: dorado, plateado, rosado"
+                class="saven-input">
+            </div>
+
+            <!-- Información de envío -->
+            <div>
+              <label class="block font-semibold text-amber-200/90 mb-1 uppercase">Información de envío</label>
+              <input type="text" id="pubShipping" value="Envío asegurado desde Cúcuta con transportadora de valores (24-48h)" placeholder="¿Aplica envío? ¿Desde dónde? ¿Tiempo de entrega?"
+                class="saven-input">
+            </div>
+
+            <!-- Casillas de Verificación (Checkboxes) -->
+            <div class="p-3 bg-zinc-900 rounded-xl border border-zinc-800 space-y-2">
+              <span class="block text-[11px] font-bold text-amber-400 uppercase tracking-wider">Opciones adicionales</span>
+              <div class="grid grid-cols-1 sm:grid-cols-3 gap-2">
+                <label class="flex items-center gap-2 cursor-pointer text-zinc-300 hover:text-white">
+                  <input type="checkbox" id="checkFreeShipping" checked class="w-4 h-4 accent-amber-500">
+                  <span>Envío gratis</span>
+                </label>
+                <label class="flex items-center gap-2 cursor-pointer text-zinc-300 hover:text-white">
+                  <input type="checkbox" id="checkSpecialOffer" class="w-4 h-4 accent-amber-500">
+                  <span>Oferta especial</span>
+                </label>
+                <label class="flex items-center gap-2 cursor-pointer text-zinc-300 hover:text-white">
+                  <input type="checkbox" id="checkFeatured" class="w-4 h-4 accent-amber-500">
+                  <span>Producto destacado</span>
+                </label>
+              </div>
+            </div>
+
+            <!-- Botón Publicar producto -->
+            <button type="submit" class="w-full py-4 gold-btn rounded-xl text-xs uppercase tracking-wider font-bold">
+              <span>Publicar producto</span>
+              <i class="fa-solid fa-arrow-right"></i>
+            </button>
+          </form>
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+  <!-- MODAL: DESCRIPCIÓN TÉCNICA DETALLADA (PDF Pantalla 4) -->
+  <div id="modalDescription" class="modal-overlay">
+    <div class="modal-content-card">
+      <button onclick="closeModal('modalDescription')" class="absolute top-4 right-4 text-zinc-400 hover:text-white p-2" aria-label="Cerrar">
+        <i class="fa-solid fa-xmark text-lg"></i>
+      </button>
+
+      <div class="flex items-center gap-2 text-xs font-mono text-amber-400 mb-2">
+        <i class="fa-solid fa-certificate"></i>
+        <span>FICHA TÉCNICA SAVEN 18K</span>
+      </div>
+
+      <h3 id="modalDetailTitle" class="text-xl font-bold font-serif-luxury text-amber-300"></h3>
+      
+      <div class="my-3 aspect-video bg-zinc-950 rounded-xl overflow-hidden border border-zinc-800">
+        <img id="modalDetailImg" src="" class="w-full h-full object-cover" alt="Detalle de joya">
+      </div>
+
+      <p id="modalDetailDesc" class="text-xs text-zinc-300 leading-relaxed mb-4"></p>
+
+      <div class="grid grid-cols-2 gap-2 text-xs bg-zinc-900 p-3 rounded-xl border border-zinc-800 mb-4">
+        <div><span class="text-zinc-500 block">Pureza:</span><strong class="text-amber-300">Oro 18K (Ley 750)</strong></div>
+        <div><span class="text-zinc-500 block">Peso:</span><strong id="modalDetailWeight" class="text-white font-mono"></strong></div>
+        <div><span class="text-zinc-500 block">Disponibilidad:</span><strong id="modalDetailAvail" class="text-emerald-400"></strong></div>
+        <div><span class="text-zinc-500 block">Colores:</span><span id="modalDetailColors" class="text-white"></span></div>
+      </div>
+
+      <div class="flex justify-between items-center pt-3 border-t border-zinc-800">
+        <div>
+          <span class="text-[11px] text-zinc-500 block">Precio:</span>
+          <span id="modalDetailPrice" class="text-lg font-bold font-mono text-amber-400"></span>
+        </div>
+        <button id="modalDetailAddBtn" class="py-2.5 px-5 gold-btn rounded-xl text-xs uppercase font-bold">
+          <i class="fa-solid fa-cart-shopping mr-1.5"></i> Añadir al Carrito
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL: CARRITO Y CHECKOUT (DRAWER DERECHO) -->
+  <div id="modalCartOverlay" class="modal-overlay">
+    <div id="modalCart" class="drawer-right">
+      <div class="flex justify-between items-center p-4 border-b border-zinc-800">
+        <h3 class="text-base font-bold font-serif-luxury text-amber-300">
+          <i class="fa-solid fa-cart-shopping mr-2 text-amber-400"></i> CARRITO DE COMPRAS
+        </h3>
+        <button onclick="closeModal('modalCart')" class="text-zinc-400 hover:text-white p-1" aria-label="Cerrar">
+          <i class="fa-solid fa-xmark text-lg"></i>
+        </button>
+      </div>
+
+      <div id="cartItemsContainer" class="flex-1 overflow-y-auto p-4 space-y-3"></div>
+
+      <div id="cartFooter" class="p-4 border-t border-zinc-800 space-y-3 bg-[#0a0c0f]">
+        <div class="flex justify-between text-sm font-bold">
+          <span class="text-amber-200">TOTAL:</span>
+          <span id="cartTotalPrice" class="text-amber-400 font-mono text-base">$0</span>
+        </div>
+        <button onclick="simulateOrderCheckout()" class="w-full py-3.5 gold-btn rounded-xl text-xs uppercase font-bold">
+          Confirmar Compra Segura
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL: CERTIFICADO DE AUTENTICIDAD 18K -->
+  <div id="modalCertificate" class="modal-overlay">
+    <div class="modal-content-card">
+      <button onclick="closeModal('modalCertificate')" class="absolute top-4 right-4 text-zinc-400 hover:text-white" aria-label="Cerrar">
+        <i class="fa-solid fa-xmark text-lg"></i>
+      </button>
+      <div class="text-center mb-4">
+        <i class="fa-solid fa-award text-amber-400 text-3xl mb-2"></i>
+        <h3 class="text-lg font-bold font-serif-luxury text-amber-300">Certificado Digital de Autenticidad</h3>
+        <span class="text-[11px] text-zinc-400">Laboratorio de Joyería SAVEN · Cúcuta</span>
+      </div>
+      <div class="bg-zinc-950 p-4 rounded-xl border border-zinc-800 text-xs space-y-2 mb-4">
+        <div class="flex justify-between"><span class="text-zinc-500">Metal:</span><strong class="text-white">Oro 18 Quilates</strong></div>
+        <div class="flex justify-between"><span class="text-zinc-500">Pureza:</span><strong class="text-amber-400">Ley 750 (75% oro fino)</strong></div>
+        <div class="flex justify-between"><span class="text-zinc-500">Código Registro:</span><strong class="text-white font-mono">SAV-18K-9901</strong></div>
+        <div class="flex justify-between"><span class="text-zinc-500">Garantía:</span><strong class="text-emerald-400">De por vida en metal</strong></div>
+      </div>
+      <button onclick="closeModal('modalCertificate')" class="w-full py-2.5 bg-zinc-800 hover:bg-zinc-700 rounded-xl text-xs font-bold text-white">
+        Cerrar Certificado
+      </button>
+    </div>
+  </div>
+
+  <!-- MODAL: PERSONALIZACIÓN ASISTIDA -->
+  <div id="modalCustom" class="modal-overlay">
+    <div class="modal-content-card">
+      <button onclick="closeModal('modalCustom')" class="absolute top-4 right-4 text-zinc-400 hover:text-white" aria-label="Cerrar">
+        <i class="fa-solid fa-xmark text-lg"></i>
+      </button>
+      <div class="text-center mb-4">
+        <i class="fa-solid fa-wand-magic-sparkles text-amber-400 text-2xl mb-1"></i>
+        <h3 class="text-lg font-bold font-serif-luxury text-amber-300">Personalización Asistida</h3>
+        <p class="text-xs text-zinc-400">Diseña tu joya a medida con orfebres de Cúcuta</p>
+      </div>
+      <form onsubmit="handleCustomSubmit(event)" class="space-y-3 text-xs">
+        <div>
+          <label class="block font-semibold mb-1">Tipo de Joya</label>
+          <select id="customType" class="saven-input">
+            <option>Anillo de Compromiso</option>
+            <option>Cadena Eslabón Especial</option>
+            <option>Candongas en Filigrana</option>
+            <option>Dije Familiar con Piedra</option>
+          </select>
+        </div>
+        <div>
+          <label class="block font-semibold mb-1">Detalles o Grabado Deseado</label>
+          <textarea id="customNotes" required rows="2" placeholder="Describe nombres, fechas o piedras naturales deseadas..." class="saven-input"></textarea>
+        </div>
+        <button type="submit" class="w-full py-3 gold-btn rounded-xl text-xs uppercase font-bold">
+          Enviar al Taller Orfebre
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <!-- MODAL: MINERÍA ÉTICA Y CIRCULAR -->
+  <div id="modalEco" class="modal-overlay">
+    <div class="modal-content-card">
+      <button onclick="closeModal('modalEco')" class="absolute top-4 right-4 text-zinc-400 hover:text-white" aria-label="Cerrar">
+        <i class="fa-solid fa-xmark text-lg"></i>
+      </button>
+      <div class="text-center mb-4">
+        <i class="fa-solid fa-leaf text-emerald-400 text-2xl mb-1"></i>
+        <h3 class="text-lg font-bold font-serif-luxury text-amber-300">Minería Responsable & Circular</h3>
+        <span class="text-[10px] text-emerald-400 font-semibold uppercase">Objetivo Social SENATIC</span>
+      </div>
+      <div class="space-y-3 text-xs text-zinc-300 leading-relaxed mb-4">
+        <p>• <strong>Origen Ético:</strong> Oro procedente de fuentes artesanales reguladas libres de mercurio.</p>
+        <p>• <strong>Economía Circular:</strong> Refundición y reciclaje de prendas antiguas para forjar nuevas piezas con pureza garantizada.</p>
+        <p>• <strong>Comercio Justo:</strong> Conexión directa con los artesanos locales de Cúcuta sin intermediarios especulativos.</p>
+      </div>
+      <button onclick="closeModal('modalEco')" class="w-full py-2.5 bg-zinc-800 hover:bg-zinc-700 rounded-xl text-xs font-bold text-white">
+        Cerrar
+      </button>
+    </div>
+  </div>
+
+  <!-- MODAL: FICHA TÉCNICA DEL PROYECTO SENA -->
+  <div id="modalProject" class="modal-overlay">
+    <div class="modal-content-card">
+      <button onclick="closeModal('modalProject')" class="absolute top-4 right-4 text-zinc-400 hover:text-white" aria-label="Cerrar">
+        <i class="fa-solid fa-xmark text-lg"></i>
+      </button>
+      <div class="text-center mb-4">
+        <i class="fa-solid fa-graduation-cap text-amber-400 text-3xl mb-1"></i>
+        <h3 class="text-xl font-bold font-serif-luxury text-amber-300">Proyecto Formativo SENATIC</h3>
+        <span class="text-xs text-zinc-400">IE Municipal María Concepción Loperena · Cúcuta</span>
+      </div>
+      <div class="space-y-2 text-xs bg-zinc-950 p-4 rounded-xl border border-zinc-800 mb-4">
+        <div class="flex justify-between py-1.5 border-b border-zinc-900"><span class="text-zinc-500">Proyecto:</span><strong class="text-amber-300">SAVEN - Joyería en Oro 18K</strong></div>
+        <div class="flex justify-between py-1.5 border-b border-zinc-900"><span class="text-zinc-500">Centro:</span><span class="text-white">9537 - Industria, Empresa y Servicios</span></div>
+        <div class="flex justify-between py-1.5 border-b border-zinc-900"><span class="text-zinc-500">Grupo:</span><span class="text-white font-mono">3237043</span></div>
+        <div class="flex justify-between py-1.5 border-b border-zinc-900"><span class="text-zinc-500">Aprendices:</span><span class="text-white font-semibold">Emmanuel Núñez & Samuel Vergara</span></div>
+        <div class="flex justify-between py-1.5 border-b border-zinc-900"><span class="text-zinc-500">Instructor:</span><span class="text-white">Mónica Cote</span></div>
+        <div class="flex justify-between py-1.5"><span class="text-zinc-500">Coordinador:</span><span class="text-white">Gabriel Rojas</span></div>
+      </div>
+      <button onclick="closeModal('modalProject')" class="w-full py-2.5 bg-amber-400 hover:bg-amber-300 text-black font-bold text-xs rounded-xl">
+        Entendido
+      </button>
+    </div>
+  </div>
+
+  <!-- MENÚ LATERAL DESPLEGABLE (DRAWER IZQUIERDO ☰) -->
+  <div id="sideMenuOverlay" class="modal-overlay">
+    <div id="sideMenuDrawer" class="drawer-left">
+      <div class="flex justify-between items-center p-4 border-b border-zinc-800">
+        <span class="font-serif-luxury font-bold text-amber-300 tracking-wider">SAVEN ORO 18K</span>
+        <button onclick="closeSideMenu()" class="text-zinc-400 hover:text-white" aria-label="Cerrar"><i class="fa-solid fa-xmark text-lg"></i></button>
+      </div>
+
+      <div class="p-4 space-y-2 flex-1 text-xs overflow-y-auto">
+        <button onclick="navigateTo('hub'); closeSideMenu()" class="w-full p-2.5 rounded-xl hover:bg-zinc-900 text-left flex items-center gap-2.5 text-zinc-300 hover:text-white">
+          <i class="fa-solid fa-house text-amber-400 w-4"></i> Inicio / Hub
+        </button>
+        <button onclick="navigateTo('catalog'); closeSideMenu()" class="w-full p-2.5 rounded-xl hover:bg-zinc-900 text-left flex items-center gap-2.5 text-zinc-300 hover:text-white">
+          <i class="fa-solid fa-bag-shopping text-amber-400 w-4"></i> Catálogo de Joyas (Compra)
+        </button>
+        <button onclick="navigateTo('publish'); closeSideMenu()" class="w-full p-2.5 rounded-xl hover:bg-zinc-900 text-left flex items-center gap-2.5 text-zinc-300 hover:text-white">
+          <i class="fa-solid fa-tag text-amber-400 w-4"></i> Publicar Joya (Venta)
+        </button>
+        <button onclick="openModal('modalCertificate'); closeSideMenu()" class="w-full p-2.5 rounded-xl hover:bg-zinc-900 text-left flex items-center gap-2.5 text-zinc-300 hover:text-white">
+          <i class="fa-solid fa-certificate text-amber-400 w-4"></i> Certificado de Autenticidad
+        </button>
+        <button onclick="openModal('modalCustom'); closeSideMenu()" class="w-full p-2.5 rounded-xl hover:bg-zinc-900 text-left flex items-center gap-2.5 text-zinc-300 hover:text-white">
+          <i class="fa-solid fa-wand-magic-sparkles text-amber-400 w-4"></i> Personalización Asistida
+        </button>
+        <button onclick="openModal('modalEco'); closeSideMenu()" class="w-full p-2.5 rounded-xl hover:bg-zinc-900 text-left flex items-center gap-2.5 text-zinc-300 hover:text-white">
+          <i class="fa-solid fa-leaf text-emerald-400 w-4"></i> Minería Responsable
+        </button>
+        <button onclick="openModal('modalProject'); closeSideMenu()" class="w-full p-2.5 rounded-xl hover:bg-zinc-900 text-left flex items-center gap-2.5 text-zinc-300 hover:text-white">
+          <i class="fa-solid fa-graduation-cap text-amber-400 w-4"></i> Proyecto SENATIC
+        </button>
+      </div>
+
+      <div class="p-4 border-t border-zinc-800">
+        <button onclick="handleLogout(); closeSideMenu()" class="w-full py-2.5 bg-red-950/60 hover:bg-red-900/60 text-red-300 border border-red-900/40 rounded-xl text-xs font-bold">
+          Cerrar Sesión
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- SCRIPT CON TODA LA LÓGICA Y REACTIVIDAD -->
+  <script src="script.js"></script>
+</body>
+</html>
